@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi Play</title>
+    <script src="multi_play.js"></script>
+    <link rel="stylesheet" href="multi_play.css">
+</head>
+<body>
+    <form id="videoForm">
+        <input type="text" id="videoId1" placeholder="Enter Video ID 1">
+        <input type="text" id="videoId2" placeholder="Enter Video ID 2">
+        <!-- ページ編纂がないbutton -->
+        <button type="button" onclick="addPlayer()">Play</button>
+    </form>
+    <div id="player_container">
+        <div id="player1"></div>
+        <div id="player2"></div>
+    </div>
+    <button type="button" onclick="playAll()">Play All</button>
+</body>
+</html>
