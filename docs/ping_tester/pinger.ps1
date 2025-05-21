@@ -31,8 +31,7 @@ function Test-Ping {
 
     $pingResult = Test-Connection -ComputerName $target -Count 1 -ErrorAction SilentlyContinue
     if ($pingResult) {
-        Write-Output "Ping to $target successful."
-        Write-Output $pingResult
+        # Write-Output "Ping to $target successful."
     } else {
         Write-Output "Ping to $target failed."
         # タイムアウトがあれば、タイムスタンプを記録する
@@ -44,9 +43,12 @@ function Test-Ping {
 Create-LogFile "ping_log.txt" # ping_log.txtを作成
 # ping_log.txtを作成
 
-# 1分毎のループ　1時間後まで実行
+# 1秒毎のループ　1時間後まで実行
+$currentTime = Get-Date
 $endTime = (Get-Date).AddHours(1)
+Write-Output "endTime: $endTime"
 while ((Get-Date) -lt $endTime) {
+    Write-Output "Current time: $(Get-Date), End time: $endTime"
     Test-Ping -target $target_global
     Test-Ping -target $target_local
     Start-Sleep -Seconds 1
