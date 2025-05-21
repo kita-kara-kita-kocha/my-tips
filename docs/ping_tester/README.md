@@ -6,6 +6,7 @@
 
 1. `pinger.ps1` を任意のフォルダにダウンロードします。
 
+[ここ](./pinger.ps1)からダウンロードできます。
 ![alt text](image-1.png)
 ![alt text](image-2.png)
 任意のフォルダに保存してください。
