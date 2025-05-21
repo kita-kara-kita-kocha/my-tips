@@ -4,20 +4,41 @@
 
 ## 使い方
 
-1. `pinger.ps1` を任意のフォルダにコピーします。
+1. `pinger.ps1` を任意のフォルダにダウンロードします。
+
+![alt text](image-1.png)
+![alt text](image-2.png)
+任意のフォルダに保存してください。
 
 2. スクリプト内の以下の変数を編集します。
 
-   - `$target_global`：グローバルIP（例: 8.8.8.8 など）
-   - `$target_local`：ローカルIP（例: 192.168.0.1 など。`ipconfig`コマンドでデフォルトゲートウェイを確認）
+   - `$target_global`：グローバル疎通確認先IP（例: 8.8.8.8 など）
+   - `$target_local`：ローカル疎通確認先IP（例: 192.168.0.1 など。`ipconfig`コマンドでデフォルトゲートウェイを確認）
 
-3. PowerShellでスクリプトを実行します。
+利用しているネットワークアダプタのデフォルトゲートウェイを確認```ipconfig```
+![alt text](image.png)
+ダウンロードした `pinger.ps1` をメモ帳等で開き、以下の部分を編集します。
 
+9行目
+```powershell
+$target_local = "192.168.0.1"
+```   
+↓
+```powershell
+$target_local = "確認したデフォルトゲートウェイのIPアドレス"
+```   
+![alt text]({F55FBEFE-5348-42D3-AFE9-CB4F8F5683F1}.png)
+
+3. PowerShellでスクリプトを実行
+   pinger.ps1を保存した任意のフォルダに移動し、右クリックして「ターミナルを開く」をクリック
+   ![alt text]({EDCDB500-9143-45A0-A25E-E021D45065C9}.png)
+   以下のコマンドでスクリプトを実行
    ```powershell
    powershell -ExecutionPolicy Bypass -File .\pinger.ps1
    ```
+   ![alt text]({FB408427-8907-44A5-8AB6-E37D98977B3F}.png)
 
-4. スクリプトは1時間、1秒ごとにpingを実行し、失敗した場合は `ping_log.txt` にタイムスタンプ付きで記録します。
+4. スクリプトは1時間、1秒ごとにpingを実行し、疎通か切れた時は、スクリプトを実行したフォルダ内に `ping_log.txt` で記録します。
 
 ## ログファイル
 
